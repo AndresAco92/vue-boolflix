@@ -1,9 +1,11 @@
 <template>
 
   <main>
-    <div>
-      
-    </div>
+    <CoverComp
+                v-for="(cover) in films"
+                :key='cover.id'
+                :Covers = cover
+    />
   </main>
 
 </template>
@@ -11,16 +13,19 @@
 <script>
 
   import axios from 'axios'
+  import CoverComp from '../components/CoverComp.vue'
+
   export default {
     name:'MainComp',
     components:{
+      CoverComp,
     },
     data(){
       return{
         apiURL:'https://api.themoviedb.org/3/search/movie',
         apiKey:'2ebbaf41573368f2518eaf78fad9226a',
         query:'marvel',
-        cover:[]
+        films:[]
       }
     },
     mounted(){
@@ -31,8 +36,9 @@
           language:'it-IT'
         }
       })
-      .then(resp => {
-        console.log(resp.data.results);
+      .then(res => {
+        this.films = res.data.results;
+        console.log(res.data.results);
       })
       .catch(err => {
         console.log(err);
@@ -42,6 +48,15 @@
   
 </script>
 
-<style>
+<style lang='scss' scoped>
+
+  main{
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px;
+  }
 
 </style>
