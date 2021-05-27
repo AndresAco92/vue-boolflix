@@ -5,8 +5,23 @@
       <h1>ciao</h1>
     </div>
     <div class="right">
-      <input placeholder="Scrivimi!" type="text">
-      <button>Cerca</button>
+      <input
+              placeholder="Scrivimi!"
+              type="text"
+              v-model="search_txt"
+      >
+      <button
+              @click="$emit('searching',{text:search_txt, type:'movie'})"
+      >FILMS
+      </button>
+      <button
+              @click="$emit('searching',{text:search_txt, type:'tv'})"
+      >TV
+      </button>
+      <button
+              @click="$emit('searching',{text:search_txt, type:'all'})"
+      >EVERY
+      </button>
     </div>
   </header>
 
@@ -14,7 +29,12 @@
 
 <script>
 export default {
-  name:'HeaderComp'
+  name:'HeaderComp',
+  data(){
+    return{
+      search_txt:''
+    }
+  }
 }
 </script>
 

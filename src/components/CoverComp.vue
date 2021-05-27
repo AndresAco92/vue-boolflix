@@ -1,8 +1,5 @@
 <template>
   <div class="container">
-    <div class="images">
-      <img :src="Covers.backdrop_path" :alt="Covers.title">
-    </div>
     <p>{{Covers.title}}</p>
     <p>{{Covers.original_title}}</p>
     <p>Lang: {{Covers.original_language}}</p>
