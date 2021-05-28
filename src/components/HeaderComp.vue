@@ -8,7 +8,7 @@
       <input
               placeholder="Scrivimi!"
               type="text"
-              v-model="search_txt"
+              v-model.trim="search_txt"
       >
       <button
               @click="$emit('searching',{text:search_txt, type:'movie'})"
@@ -75,6 +75,7 @@ export default {
       }
       button{
         padding: 1px 3px;
+        margin: 5px;
       }
     }
   }

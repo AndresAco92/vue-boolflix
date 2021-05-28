@@ -1,7 +1,16 @@
 <template>
 
   <main>
-    <CoverComp />
+    <div class="container">
+      <h1>{{titles[type]}}</h1>
+
+      <CoverComp
+                v-for="card in list"
+                :key="card.id"
+                :card='card'
+      />     
+    </div>
+
   </main>
 
 </template>
@@ -14,6 +23,18 @@
     name:'MainComp',
     components:{
       CoverComp
+    },
+    props:{
+      type: String,
+      list: Array
+    },
+    data(){
+      return{
+        titles:{
+          'movies': 'Film trovati',
+          'tv': 'Serie tv trovate'
+        }
+      }
     }
   }    
   
@@ -24,10 +45,12 @@
   main{
     height: calc(100vh - 70px);
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    padding: 10px;
+    .container{
+      width: 90%;
+      height: 90%;
+    }
   }
 
 </style>

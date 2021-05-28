@@ -1,10 +1,9 @@
 <template>
   <div class="container">
-    <p>{{Covers.title}}</p>
-    <p>{{Covers.original_title}}</p>
-    <p>Lang: {{Covers.original_language}}</p>
-    <p>{{Covers.vote_average}}</p>
-
+    <p>{{card.title}}</p>
+    <p>{{card.original_title || card.original_name}}</p>
+    <p>Lang: {{card.original_language}}</p>
+    <p>{{card.vote_average}}</p>
   </div>
 </template>
 
@@ -12,8 +11,8 @@
 export default {
   name: 'CoverComp',
   props:{
-    Covers: Object
-  }
+    card:Object
+  },
 }
 </script>
 
